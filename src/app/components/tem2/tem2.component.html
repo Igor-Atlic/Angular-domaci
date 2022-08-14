@@ -1,0 +1,9 @@
+<div>
+  <h3>Text Similarity</h3>
+  <div class="form-group">
+    <textarea   [(ngModel)]= "text1" class="w-50"rows="3"></textarea>
+    <textarea   [(ngModel)]= "text2" class="w-50"rows="3"></textarea>
+    <button (click) = "getPost()" class="btn btn-dark">Click me</button>
+  </div>
+  <h3 *ngIf = "similarity >= 0">Similarity: {{similarity*100}}%</h3>
+</div>

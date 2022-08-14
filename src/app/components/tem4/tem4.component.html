@@ -1,0 +1,17 @@
+<div>
+  <h3>Sentiment Analysis</h3>
+  <div class="form-group">
+    <textarea   [(ngModel)]= "text" class="w-50"rows="3"></textarea>
+    <br>
+    <label>Lang</label>
+    <select [(ngModel)] = "lang"class="form-control">
+      <option>en</option>
+      <option>it</option>
+      <option>auto</option>
+    </select>
+    <button (click) = "getPost()" class="btn btn-dark">Click me</button>
+  </div>
+
+  <h3 *ngIf = "sentiment.score != -2">Sentiment: {{sentiment.score}}</h3>
+  <h1 *ngIf = "sentiment.score != -2" [ngStyle]="{'color': color  }"> {{sentiment.type}}</h1>
+</div>

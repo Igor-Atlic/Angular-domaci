@@ -1,0 +1,38 @@
+<div>
+  <h3>Entity Extraction</h3>
+    <div class="form-group">
+      <textarea   [(ngModel)]= "text" class="w-50"rows="3"></textarea>
+    </div>
+    <div class="form-group">
+      <input type="range"  min="0" max="1" step="0.01" value="0.6" [(ngModel)] = "confidence">
+    </div>
+  <br>
+  <div class="checkbox">
+    <label><input (click) =getInclude($event)  type="checkbox" value="image">Image</label>
+  </div>
+  <div class="checkbox">
+    <label><input (click) =getInclude($event) type="checkbox" value="abstract">Abstract</label>
+  </div>
+  <div class="checkbox">
+    <label><input (click) =getInclude($event) type="checkbox" value="categories">Categories</label>
+  </div>
+  <button class="btn btn-dark" (click) = "getPost()">Click me</button>
+  <input [(ngModel)]="more" class="form-check-input" type="checkbox" id="more" >
+  <label for="more">All data</label>
+  <ul  *ngFor="let annotations of annotations;let i = index;" class="mb-2">
+      <li class="list-group-item active">{{ i+1 }}. {{ annotations.title }}</li >
+      <div *ngIf = "more">
+        <li class="list-group-item">start = {{ annotations.start }}</li >
+        <li class="list-group-item">end = {{ annotations.end }}</li >
+        <li class="list-group-item">spot = {{ annotations.spot }}</li >
+        <li class="list-group-item">confidence = {{ annotations.confidence }}</li >
+        <li class="list-group-item">id = {{ annotations.id }}</li >
+        <li class="list-group-item">title = {{ annotations.title }}</li >
+        <li class="list-group-item">uri = {{ annotations.uri }}</li>
+        <li class="list-group-item">label = {{ annotations.label }}</li >
+      </div>
+      <li class="list-group-item" *ngIf = "annotations.categories !=null">Categories: {{ annotations.categories }}</li>
+      <li class="list-group-item" *ngIf = "annotations.abstract !=null">Abstract: {{ annotations.abstract }}</li>
+      <img *ngIf = "annotations.image !=null" src={{annotations.image.thumbnail}}>
+  </ul >
+</div>

@@ -1,0 +1,16 @@
+<div>
+  <h3>Language Detection</h3>
+  <div class="form-group">
+    <textarea   [(ngModel)]= "text" class="w-50"rows="3"></textarea>
+    <br>
+    <input [(ngModel)]="clean" class="form-check-input" type="checkbox" id="clean" >
+    <label for="clean">Clean</label>
+    <br>
+    <button (click) = "getPost()" class="btn btn-dark">Click me</button>
+  </div>
+  <div>
+    <ul  *ngFor="let detectedLang of detectedLangs;let i = index;" class="mb-2">
+      <li class="list-group-item">{{ i+1 }}. lang = {{ detectedLang.lang }}, confidence = {{ detectedLang.confidence }}</li>
+    </ul >
+  </div>
+</div>
